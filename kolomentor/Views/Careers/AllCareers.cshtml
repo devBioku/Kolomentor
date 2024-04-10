@@ -1,0 +1,54 @@
+﻿@model IEnumerable<kolomentor.Models.Career>
+
+<div>
+    <figure class="text-start">
+        <blockquote class="blockquote badge text-bg-secondary">
+            <h6>List of Career.</h6>
+        </blockquote>
+    </figure>
+</div>
+
+<div class="container-fluid">
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th scope="col">S/N</th>
+                    <th scope="col"> Profession</th>
+                    <th scope="col"> Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (Career career in Model)
+                    {
+
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => career.Id)
+                            </td>
+                            <td class="align-middle">
+                                <a asp-action="Details" asp-route-id="@career.Id">@Html.DisplayFor(modelItem => career.Category)</a>
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => career.Description)
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+            <div style="position: fixed; right: 15%;" class="text-white">
+                <a asp-controller="Careers" asp-action="Create" class="btn btn-success">Add a Career</a>
+            </div>
+        </table>
+
+
+
+    </div>
+
+</div>
+

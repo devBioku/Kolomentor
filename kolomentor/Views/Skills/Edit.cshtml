@@ -1,0 +1,61 @@
+﻿@model Skill
+
+@{
+    ViewData["Title"] = "Update Skill";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-3">
+        </div>
+
+        <div class="col-6">
+            <div class="text-center">
+
+                <p>
+                    <h1>
+                        Update @Model.Title
+                    </h1>
+                </p>
+
+            </div>
+
+            
+            <div class="card d-flex ">
+                <div class="card-body">
+                    <form method="post" asp-action="Edit">
+                        <div class="mb-3 d-none">
+                            <label asp-for="MentorId" class="form-label">Title</label>
+                            <input asp-for="MentorId" class="form-control" value="@ViewBag.mentorId">
+                            <span asp-validation-for="MentorId" class=" text-danger"></span>
+                        
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Title</label>
+                            <input asp-for="Title" class="form-control">
+                            <span asp-validation-for="Title" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-5">
+                            <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-3">
+        </div>
+    </div>
+
+</div> 

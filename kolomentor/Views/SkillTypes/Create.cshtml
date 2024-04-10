@@ -1,0 +1,58 @@
+@model SkillType
+
+@{
+    ViewData["Title"] = "Add a new Skill";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+
+        <div class="col-6 ">
+            <div class="m-5">
+                <div class="text-center p-3 h3">Add a New Skill Type</div>
+                <div class="card d-flex shadow-lg p-3 mb-5 bg-body-tertiary rounded " style="height: 100%;">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="mb-3">
+                                    <input class="form-control d-none" asp-for="pseudoMentorId" value="@ViewBag.pseudoMentorId" />
+                                    <span asp-validation-for="pseudoMentorId" class=" text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input class="form-control d-none" asp-for="SkillId" value="@ViewBag.skillId" />
+                                    <span asp-validation-for="SkillId" class=" text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="SkillTypeTitle" for="recipient-name" class="col-form-label">Topic</label>
+                                    <input asp-for="SkillTypeTitle" type="text" class="form-control" id="recipient-name">
+                                    <span asp-validation-for="SkillTypeTitle" class=" text-danger"></span>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="SkillTypeTitleDescription" for="message-text" class="col-form-label">Description</label>
+                                    <textarea asp-for="SkillTypeTitleDescription" class="form-control" id="message-text"></textarea>
+                                    <span asp-validation-for="SkillTypeTitleDescription" class=" text-danger"></span>
+                                </div>
+                                <div>
+                                     <input type="submit" value="Add Skill Type" class="btn btn-outline-success float-end" />
+                               </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+
+        </div>
+    </div>
+
+</div>
+
+

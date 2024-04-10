@@ -1,0 +1,82 @@
+﻿@model IEnumerable<kolomentor.Models.Mentor>
+@{
+    ViewData["Title"] = "Mentor's Selection";
+}
+
+
+
+
+
+
+
+
+
+
+@*<h2>@ViewBag.FullName</h2>
+<h2>@ViewBag.Email</h2>
+<h2>@ViewBag.Gender</h2>
+<h2>@ViewBag.EducationLevel</h2>
+<h2>@ViewBag.CareerId</h2>
+<h2>@ViewBag.ExecutiveSummary</h2>*@
+
+<div class="mainContainer">
+
+    <form id="registerForm" method="post" asp-action="MapMentorAndMentee">
+       
+    </form>
+
+</div>
+
+<div class="container-fluid">
+    <form asp-action="Create">
+        <h1 class="span2">Map Mentor & Mentee</h1>
+
+@*        <div class="form-group">
+            <input type="hidden" class="form-control" value="@ViewBag.Email" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" value="@ViewBag.Gender" />
+        </div>
+
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" value="@ViewBag.EducationLevel" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" value="@ViewBag.CareerId" />
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" value="@ViewBag.ExecutiveSummary" />
+        </div>
+
+        <br />
+        <div class="form-group">
+
+            <input type="submit" value="Submit " class="btn btn-primary" />
+
+        </div>*@
+
+        @foreach (Mentor mentor in Model)
+        {
+            <div class="d-inline-block" style="width: 18rem">
+                <ul>
+                    <li class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h2 class="card-title">@Html.DisplayFor(modelItem => mentor.FullName)</h2>
+                            <p class="lh-sm" readonly>@Html.DisplayFor(modelItem => mentor.JobTitle) @@ @Html.DisplayFor(modelItem => mentor.PlaceOfWork)</p>
+                             <a type="button" class="btn btn-primary btn btn-primary" asp-action="ConfirmMentor" asp-route-id="@mentor.Id">See Details</a>
+                        </div>   
+                    </li>
+                </ul>
+            </div>
+        }
+    </form>
+
+
+
+</div>
+

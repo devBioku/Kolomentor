@@ -1,0 +1,21 @@
+@model kolomentor.Models.PartialViewModel
+<div>
+    <div class="nav nav-tabs" id="myTab" role="tablist" >
+        <div class="mt-4" style="background-color: #f0f0f0;">
+            <div class="list-group list-group-flush" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"  class="list-group-item list-group-item-action "><i class="fs-5 bi bi-speedometer2 text-success"></i> Overview </a>
+                @* <a asp-action="Dashboard" asp-route-id="@Model.Id" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-speedometer2 text-success"></i> Dashboard </a> *@
+                <a id="v-pills-menteeview-tab" data-bs-toggle="pill" data-bs-target="#v-pills-menteeview" type="button" role="tab" aria-controls="v-pills-menteeview" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-eyeglasses text-success" ></i> Mentee's View</a>
+                <a id="v-pills-resources-tab" data-bs-toggle="pill" data-bs-target="#v-pills-resources" type="button" role="tab" aria-controls="v-pills-resources" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-journals text-success"></i> Resources</a>
+                <a id="v-pills-notification-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notification" type="button" role="tab" aria-controls="v-pills-notification" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-bell text-warning"></i> Notification</a>
+                <a id="v-pills-availability-tab" data-bs-toggle="pill" data-bs-target="#v-pills-availability" type="button" role="tab" aria-controls="v-pills-availability" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-calendar2-week text-success"></i> Availability </a>
+                <a id="v-pills-broadcast-tab" data-bs-toggle="pill" data-bs-target="#v-pills-broadcast" type="button" role="tab" aria-controls="v-pills-broadcast" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-megaphone text-warning"></i> Broadcast </a>
+                <a id="v-pills-connect-tab" data-bs-toggle="pill" data-bs-target="#v-pills-connect" type="button" role="tab" aria-controls="v-pills-connect" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-arrows-angle-contract text-success"></i> Connect </a>
+                <a id="v-pills-portfolio-tab" data-bs-toggle="pill" data-bs-target="#v-pills-portfolio" type="button" role="tab" aria-controls="v-pills-portfolio" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-briefcase text-warning"></i> Portfolio </a>
+                <a id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-gear text-success"></i> Settings </a>
+                <a id="v-pills-communique-tab" data-bs-toggle="pill" data-bs-target="#v-pills-communique" type="button" role="tab" aria-controls="v-pills-communique" aria-selected="false" href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-chat-quote-fill text-warning"></i> Communique </a>
+                <a asp-controller="@Model.Controller" asp-action="@Model.Action" asp-route-id="@Model.Id" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-gear-wide-connected text-success"></i> Configuration </a>
+            </div>
+        </div>
+    </div>
+</div>

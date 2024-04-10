@@ -1,0 +1,222 @@
+﻿@model Mentee
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Details";
+}
+<div class="container-fluid" style="background-color: #faffff;">
+    <div class="row">
+        <div class="col" >
+            <a href="#">
+                <i class="bi bi-list-ul text-success fs-3 " data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" ></i>  
+
+            </a>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header text-uppercase">
+                    <div class="fs-1">
+                        @{
+
+                    // C# code block
+                    string inputString = Model.FullName;
+                    string[] words = inputString.Split(' ');
+                    if (words.Length >= 2)
+                    {
+                        int counter = 0;
+                        string firstLetterWord1= null;
+                        string firstLetterWord2= null;
+                        // Get the first letter of each word
+                        
+                        try{
+                            firstLetterWord1 = words[0].Substring(0, 1);                            
+                            firstLetterWord2 = words[0].Substring(0, 1);                            
+                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                        }catch{
+                            firstLetterWord1 = null;
+                            while(firstLetterWord1==null) {
+                                try{
+                                    
+                                    firstLetterWord1 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                                
+                            }
+                        }
+
+                        try{
+                            firstLetterWord2 = words[1].Substring(0, 1);
+                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                        }catch{
+                            while(firstLetterWord2==null) {
+                                try{
+                                    
+                                    firstLetterWord2 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                            }
+                        }
+                        string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                        @Html.DisplayFor(modelItem => twoAlphabets) 
+
+                        
+                    }else
+                    {
+
+                        if (!string.IsNullOrEmpty(inputString) && inputString.Length >= 2)
+                        {
+                            string twoAlphabets = inputString.Substring(0, 2);
+                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                        }else{
+                            // Handle the case where there are not enough words
+                            string twoAlphabets = "N/A";
+                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                            
+                        
+                        }
+                    }
+                }
+
+                </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div> 
+
+                <div class="offcanvas-body">
+                    <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-speedometer2 text-success"></i> Dashboard </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-people-fill text-warning"></i> Colleagues</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-journals text-success"></i> Resources</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-bell text-warning"></i> Notification</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-calendar2-week text-success"></i> Mentor's Availability </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-megaphone text-warning"></i> Broadcast </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-arrows-angle-contract text-success"></i> Connect </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-person-lines-fill text-warning"></i> Your Mentor </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-chat-left-text text-success"></i> Messages </a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-journals text-warning"></i> Resources</a>
+                    <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-gear text-warning"></i> Settings </a>
+                    
+                </div>
+
+            </div>
+            
+        </div>
+
+
+        <div class="col">
+            <div class="text-center ">
+                <p class="fw-bolder fs-1 text-uppercase lh-sm"> @Model.FullName</p>
+                <span>Mentor: @Model.Mentor.FullName</span>
+                @* <span class="lh-sm" readonly>@Model.Mentor.JobTitle aspirant</span> *@
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="row ">
+        <div class="col m-3 shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="height: 70vh;">
+
+        <h6 class="text-center"><i class="bi bi-briefcase text-warning fs-5"></i> SKILLS</h6>
+
+            @if (Model.Mentor != null && Model.Mentor.Skills != null)
+            {
+                int numbering = 0;
+                @foreach (var skill in Model.Mentor.Skills)
+                {
+                    <div class="fixed-height-element">
+                        <a href="#" class=" border rounded-2 border border-0 text-decoration-none d-inline-flex focus-ring focus-ring-warning py-1 px-2" >
+                            <span class="list-group-item list-group-item-action rounded border border-0 " onclick="changeContent('@skill.Title', '@skill.Description')">
+                                <span class="border justify-content-between text-success text-decoration-none text-uppercase border border-0">@skill.Title</span>
+                            </span>
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <li>No skills available for this mentor.</li>
+            }
+
+        </div>  
+
+        <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="height: 70vh;">
+            <div id="contentToChange">   
+                <script>
+                    var propertiesMap = {};
+
+                    // Populate propertiesMap dynamically based on varyingData
+                    @foreach (var skill in Model.Mentor.Skills)
+                    {
+                        <text>
+                            propertiesMap['@skill.Title'] = 
+                                '<p class="text-center fs-4 text-uppercase">@skill.Title ' +
+                                '<p class="text-center">@skill.Description ' +
+                                '@foreach (var skilltype in @skill.SkillTypes) {<div><a href="#" class="p-3 border justify-content-between text-success text-uppercase border border-0 text-decoration-none d-inline-flex focus-ring focus-ring-danger rounded py-1 px-2 " onclick="updateContent(\'@skilltype.SkillTypeTitle\', \'@skilltype.SkillTypeTitleDescription\')" >@Html.DisplayFor(modelItem => skilltype.SkillTypeTitle)</a></div> <br> }' +
+                                
+                            '</p>'
+                        </text>  
+                    }
+
+                    function changeContent(buttonName, buttonText) {
+                        // Get the element by its ID
+                        var contentElement = document.getElementById("contentToChange");
+
+                        // Change the content based on the button clicked
+                        contentElement.innerHTML = propertiesMap[buttonName];
+                    }
+                </script>
+                 
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-10 overflow-auto" style="height: 70vh;">
+                        <div id="contentToUpdate">
+                        <!-- Initial SkillTypeTopicTitle content (can be empty or static) -->
+        
+                        <script class="text-center">
+                            var propMap = {};
+                            @foreach (var skill in Model.Mentor.Skills)
+                            {
+                                foreach(var skillType in @skill.SkillTypes)
+                                {
+                                    <text>
+                                        propMap['@skillType.SkillTypeTitle'] = 
+                                            '<p class="text-center">@skillType.SkillTypeTitle Topics</p> <p>' +
+                                            '<p class="">@skillType.SkillTypeTitleDescription</p>' +
+                                            '@foreach (var topic in @skillType.SkillTypeTopics) {<div class="m-4 p-4 border text-center border-outline-success rounded shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 25rem; "> @Html.DisplayFor(modelItem => topic.SkillTypeTopicTitle) </div> }' +
+                                            
+                                        '</p>'
+                                    </text>
+                                }                                                
+                            }
+
+                            function updateContent(btnName, btnText) {
+                                // Get the element by its ID
+                                var cntntElement = document.getElementById("contentToUpdate");
+
+                                // Change the content based on the button clicked
+                                cntntElement.innerHTML = propMap[btnName];
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="col-1">
+
+                </div>
+            </div>
+
+        </div>
+
+    <div>   
+</div>

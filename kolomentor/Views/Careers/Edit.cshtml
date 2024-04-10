@@ -1,0 +1,41 @@
+﻿@model Career
+
+@{
+    ViewData["Title"] = "Update Career";
+}
+
+
+<div class="container-fluid">
+    <div>
+
+        <p>
+            <h1>
+                Update @Model.Category
+            </h1>
+        </p>
+
+    </div>
+
+    <div>
+        <form method="post" asp-action="Edit">
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">Category</label>
+                <input asp-for="Category" class="form-control">
+                <span asp-validation-for="Category" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-5">
+
+                <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+            </div>
+        </form>
+    </div>
+
+</div> 

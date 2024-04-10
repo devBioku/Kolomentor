@@ -1,0 +1,424 @@
+﻿@model Mentor
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Details";
+}
+<div class="container-fluid">
+    <div class="row d-flex align-items-start">
+        <div class="col-2 " >
+            <div class="fs-1 text-uppercase">
+                @{
+                    // C# code block
+                    string inputString = Model.FullName;
+                    string[] words = inputString.Split(' ');
+                    if (words.Length >= 2)
+                    {
+                        int counter = 0;
+                        string firstLetterWord1= null;
+                        string firstLetterWord2= null;
+                        // Get the first letter of each word
+                        
+                        try{
+                            firstLetterWord1 = words[0].Substring(0, 1);                                                    
+                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                        }catch{
+                            firstLetterWord1 = null;
+                            while(firstLetterWord1==null) {
+                                try{
+                                    
+                                    firstLetterWord1 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                                
+                            }
+                        }
+
+                        try{
+                            firstLetterWord2 = words[1].Substring(0, 1);
+                        }catch{
+                            while(firstLetterWord2==null) {
+                                try{
+                                    
+                                    firstLetterWord2 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                            }
+                        }
+                        string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                        @Html.DisplayFor(modelItem => twoAlphabets)    
+                    }else
+                    {
+                        if (!string.IsNullOrEmpty(inputString) && inputString.Length >= 2)
+                        {
+                            string twoAlphabets = inputString.Substring(0, 2);
+                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                        }else{
+                            // Handle the case where there are not enough words
+                            string twoAlphabets = "N/A";
+                            @Html.DisplayFor(modelItem => twoAlphabets)
+                        }
+                    }
+                }
+
+            </div>
+            <span class="" readonly><i class="bi bi-pen"></i> works@@ @Model.PlaceOfWork</span>
+            <div>
+                @{
+                    var partialVielModel = new PartialViewModel
+                    {
+                        Id = @Model.Id,
+                        Controller = "Mentors",
+                        Action = "Configuration"
+                    };
+                }
+                @await Html.PartialAsync("_mentorsideBar", partialVielModel)
+            </div>
+
+            <div class="tab-content" id="myTabContent">
+                
+            </div>
+
+        </div>
+
+    
+        <div class="col-10">
+            <div>
+                <div class="text-center">
+                    <p class="fw-bolder fs-1 text-uppercase lh-sm"> @Model.FullName</p>
+                    <span class="lh-sm" readonly>@Model.JobTitle @@ @Model.PlaceOfWork</span>
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="v-pills-tabContent">
+                
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                    
+                    
+                    <div class="grid">
+                        
+                        <ul class="nav nav-tabs d-flex justify-content-between" id="myTab" role="tablist">
+                            
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Roadmap</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Mentees</button>
+                                
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Resources</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>
+                                
+                                    <div class="float-end">
+                                        <div class="btn btn-light position-relative">
+                                            Total
+                                            <span class="position-absolute top-0 start-100 translate-middle badge  bg-warning ">
+                                                <span readonly>@Model.Mentees.Count()</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                
+                                </button>
+                            </li>
+
+                        </ul>
+
+
+                        <div class="tab-content" id="myTabContent">
+
+                            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                                <p class="d-flex justify-content-center  bg bg-info p-2 m-3 rounded fs-5 text-light">Required Skills to become @Model.JobTitle </p>
+
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 55vh;">
+                                            <h6><i class="bi bi-briefcase text-warning fs-5"></i> SKILLS</h6>
+                                            <div>
+
+                                                @{  
+                                                    foreach (var skill in Model.Skills)
+                                                    {
+                                                        <div >
+                                                            <a href="#" class="d-inline-flex focus-ring focus-ring-warning py-1 px-2 text-decoration-none rounded-2 border border-0 text-decoration-none " onclick="changeContent('@skill.Title', '@skill.Description')" >
+                                                                <span class="bg-transparent list-group-item list-group-item-action rounded border border-0 overflow-y-auto  " > 
+                                                                    <span class="justify-content-between text-success text-uppercase" >@Html.DisplayFor(modelItem => skill.Title)</span>                                
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        
+                                                    }                              
+                                                }
+
+                                                <div class="sticky-bottom">
+                                                    <form asp-controller="Skills" asp-action="Create">
+
+                                                        <div>
+                                                            <input class="form-control d-none" asp-for="@Model.Id" value="@Model.Id" />
+                                                        </div>
+
+                                                        <div style=": fixed;" class="text-white float-end"> 
+                                                            <i class="bi bi-plus"></i><input type="submit" value="Add a Skill" class="btn btn-outline-success" />
+                                                        </div>
+
+                                                    </form>
+                                                </div> 
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 55vh; background-color: #ffffff;">
+                                            <div id="contentToChange"> 
+                                                <div class="card" style="width: 100%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-danger">Important</h5>
+                                                        <p class="card-text">
+                                                            Click on each Skill to add a subskill. Each subskill you add to the skill will be served as the roadmap for learning that skill. Ultimately, the combination of Skill and subskill will be used as Roadmap for your mentee(s) to work in a similar job title as you.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!-- This block displays the switch when each skill is clicked on -->
+                                                <div class="text-secondary">
+                                                    <div>
+                                                        <img src="~/Images/roadmap.gif" alt="roadmap" width="100%">
+                                                    </div>
+                                                </div> 
+
+                                            
+                                                <script>
+                                                    var propertiesMap = {};
+                                                    @foreach (var skill in Model.Skills)
+                                                    {
+                                                        <text>
+                                                            propertiesMap['@skill.Title'] = 
+                                                                '<p class="text-center">@skill.Title Roadmap</p> <p class="card d-flex p-3">@skill.Description ' +
+                                                                '@foreach (var skilltype in @skill.SkillTypes) {<div><a href="#" class="d-inline-flex focus-ring focus-ring-warning py-1 px-2 text-decoration-none border justify-content-between text-success text-uppercase border border-0 text-decoration-none" onclick="updateContent(\'@skilltype.SkillTypeTitle\', \'@skilltype.SkillTypeTitleDescription\')" ><span class="bg-transparent list-group-item list-group-item-action rounded border border-0 overflow-y-auto text-success">@Html.DisplayFor(modelItem => skilltype.SkillTypeTitle)</span></a></div>}' +
+                                                                '<div class="sticky-bottom">' +
+                                                                    '<form asp-controller="SkillTypes" asp-action="Create">' +
+                                                                        '<div>' +
+                                                                            '<input class="form-control d-none" asp-for="@Model.Id" value="@Model.Id" />' +
+                                                                        '</div>' +
+                                                                        '<div>' +
+                                                                            '<input class="form-control d-none" asp-for="@skill.Id" value="@skill.Id" />' +
+                                                                        '</div>' +
+                                                                        '<div>' +
+                                                                            '<input type="submit" value="Add @skill.Title skill type" class="btn btn-outline-success mt-2 float-end"/>' +
+                                                                        '</div>' +
+                                                                    '</form>' +
+                                                                '</div>' +
+                                                            '</p>'
+                                                        </text>  
+                                                    }
+                                                    
+                                                    function changeContent(buttonName, buttonText) {
+                                                        // Get the element by its ID
+                                                        var contentElement = document.getElementById("contentToChange");
+
+                                                        // Change the content based on the button clicked
+                                                        contentElement.innerHTML = propertiesMap[buttonName];
+                                                    }
+
+                                                </script>
+                                                
+                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 55vh;">
+                                            <!-- Content area for SkillTypeTopicTitle -->
+                                            <div id="contentToUpdate">
+                                                <!-- Initial SkillTypeTopicTitle content (can be empty or static) -->
+                                                <script>
+                                                    var propMap = {};
+                                                    @foreach (var skill in Model.Skills)
+                                                    {
+                                                        foreach(var skillType in @skill.SkillTypes)
+                                                        {
+                                                            <text>
+                                                                propMap['@skillType.SkillTypeTitle'] = 
+                                                                    '<p class="text-center">@skillType.SkillTypeTitle Roadmap</p> <p>' +
+                                                                    '@foreach (var topic in @skillType.SkillTypeTopics) {<div class="border border-0 overflow-y-auto">@Html.DisplayFor(modelItem => topic.SkillTypeTopicTitle)</div> }' +
+                                                                    '<div class="sticky-bottom">' +
+                                                                        '<form asp-controller="SkillTypeTopics" asp-action="Create">' +
+                                                                        '<div>' +
+                                                                            '<input class="form-control d-none" asp-for="@Model.Id" value="@Model.Id" />' +
+                                                                        '</div>' +
+
+                                                                        '<div>' +
+                                                                            '<input class="form-control d-none" asp-for="@skillType.Id" value="@skillType.Id" />' +
+                                                                        '</div>' +
+                                                                        '<div>' +
+                                                                            '<input type="submit" value="Add a Topic to  @skillType.SkillTypeTitle" class="btn btn-outline-success mt-2 float-end "/>' +
+                                                                        '</div>' +
+                                                                    '</form>' +
+                                                                    '</div>' +
+                                                                '</p>'
+                                                            </text>
+                                                        }                                                
+                                                    }
+
+                                                    function updateContent(btnName, btnText) {
+                                                        // Get the element by its ID
+                                                        var cntntElement = document.getElementById("contentToUpdate");
+
+                                                        // Change the content based on the button clicked
+                                                        cntntElement.innerHTML = propMap[btnName];
+                                                    }
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                              
+                            </div>
+
+                            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                <div>
+                                    <table class="table table-hover table-borderless ">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col">Abbr</th>
+                                                <th scope="col">Full Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Education Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                @foreach (var mentee in Model.Mentees)
+                                                {
+                                                    <tr>
+                                                        <td class="align-middle">
+                                                            
+                                                            <a asp-controller="Mentees" asp-action="Details" asp-route-id="@mentee.Id" class="fs-6 p-2 m-1 bg bg-success text-light rounded text-uppercase" style="text-decoration: none; color: inherit;" >
+                                                                @{
+
+                                                                    // C# code block
+                                                                    string fullName = mentee.FullName;
+                                                                    string[] fullNameSplitted = fullName.Split(' ');
+                                                                    if (words.Length >= 2)
+                                                                    {
+                                                                        int counter = 0;
+                                                                        string firstLetterWord1= null;
+                                                                        string firstLetterWord2= null;
+                                                                        // Get the first letter of each word
+                                                                        
+                                                                        try{
+                                                                            firstLetterWord1 = fullNameSplitted[0].Substring(0, 1);                                                    
+                                                                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                                                                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                                                                        }catch{
+                                                                            firstLetterWord1 = null;
+                                                                            while(firstLetterWord1==null) {
+                                                                                try{
+                                                                                    
+                                                                                    firstLetterWord1 = fullNameSplitted[counter].Substring(0, 1);
+                                                                                }catch{
+                                                                                    counter ++;
+                                                                                }
+                                                                                
+                                                                            }
+                                                                        }
+
+                                                                        try{
+                                                                            firstLetterWord2 = fullNameSplitted[1].Substring(0, 1);
+                                                                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                                                                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                                                                        }catch{
+                                                                            while(firstLetterWord2==null) {
+                                                                                try{
+                                                                                    
+                                                                                    firstLetterWord2 = fullNameSplitted[counter].Substring(0, 1);
+                                                                                }catch{
+                                                                                    counter ++;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                                                                        @Html.DisplayFor(modelItem => twoAlphabets) 
+
+                                                                        
+                                                                    }else
+                                                                    {
+
+                                                                        if (!string.IsNullOrEmpty(fullName) && fullName.Length >= 2)
+                                                                        {
+                                                                            string twoAlphabets = fullName.Substring(0, 2);
+                                                                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                                                                        }else{
+                                                                            // Handle the case where there are not enough fullNameSplitted
+                                                                            string twoAlphabets = "N/A";
+                                                                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                                                                            
+                                                                        
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            </a>
+                                                        </td>
+
+                                                        <td class="align-middle">
+                                                            <a style="text-decoration: none; color: inherit;" asp-controller="Mentees" asp-action="Details" asp-route-id="@mentee.Id">@Html.DisplayFor(modelItem => mentee.FullName)</a>
+                                                        </td>
+
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => mentee.Email)
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => mentee.Gender)
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            @Html.DisplayFor(modelItem => mentee.EducationLevel)
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">CCCCCCCCCCCCCCC</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+
+
+
+                <div class="tab-pane fade" id="v-pills-menteeview" role="tabpanel" aria-labelledby="v-pills-menteeview-tab" tabindex="0">
+                    @* @await Html.PartialAsync("_MentorDashboard", "Mentors") *@
+
+                    Mentees' view goes here
+                </div>
+                <div class="tab-pane fade" id="v-pills-resources" role="tabpanel" aria-labelledby="v-pills-resources-tab" tabindex="0">Resources Content Goes here</div>
+                <div class="tab-pane fade" id="v-pills-notification" role="tabpanel" aria-labelledby="v-pills-notification-tab" tabindex="0">Notification Content Goes here</div>
+                <div class="tab-pane fade" id="v-pills-availability" role="tabpanel" aria-labelledby="v-pills-availability-tab" tabindex="0">Here for content relating to availability</div>
+                <div class="tab-pane fade" id="v-pills-broadcast" role="tabpanel" aria-labelledby="v-pills-broadcast-tab" tabindex="0">Here for content relating to Broadcast</div>
+                <div class="tab-pane fade" id="v-pills-connect" role="tabpanel" aria-labelledby="v-pills-connect-tab" tabindex="0">Here for content relating to connect</div>
+                <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-portfolio-tab" tabindex="0">Here for content relating to portfolio</div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">Here for content relating to setting</div>
+                <div class="tab-pane fade" id="v-pills-communique" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">Here for content relating to communique</div>
+            </div>
+
+        </div>  
+    </div>
+
+
+</div>
+
+
+
+
+

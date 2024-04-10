@@ -1,0 +1,169 @@
+﻿@model Mentor
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Details";
+}
+<div class="container-fluid">
+    <div class="row ">
+
+        <div class="col">
+            <div>
+                <div class="">
+                    <p class="fw-bolder fs-1 lh-sm"> Configurations</p>
+                </div>
+            </div>
+
+            <div class="grid">
+    
+
+                <div class="tab-content" id="myTabContent">
+                                    
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 70vh;">
+                                    <h6><i class="bi bi-briefcase text-warning fs-5"></i> SKILLS</h6>
+                                    <div >
+
+                                        @{  
+                                            foreach (var skill in Model.Skills)
+                                            {
+                                                <div>
+                                                    <a href="#" class="d-inline-flex focus-ring focus-ring-primary py-1 px-2 text-decoration-none rounded-2 border border-0 text-decoration-none " onclick="changeContent('@skill.Title', '@skill.Description')" >
+                                                        <span class="bg-transparent list-group-item list-group-item-action rounded border border-0 overflow-y-auto  " > 
+                                                            <div class="d-flex">
+                                                                <form method="post" asp-controller="Skills" asp-action="Details" asp-route-id="@skill.Id" class="m-0">
+                                                                    <span class="text-success text-uppercase">@Html.DisplayFor(modelItem => skill.Title)</span>
+                                                                    <input class="form-control d-none" asp-for="@Model.Id" value="@Model.Id" />
+                                                                    <button type="submit" class="bg-transparent border-0">
+                                                                        <i class="bi bi-pen text-warning"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </span>
+                                                    </a>
+                                                </div>
+
+                                            }                              
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 70vh; background-color: #ffffff;">
+                                    <div id="contentToChange"> 
+                                                                           
+                                        <script>
+                                            var propertiesMap = {};
+                                            @foreach (var skill in Model.Skills)
+                                            {
+                                                @* <text>
+                                                    propertiesMap['@skill.Title'] = 
+                                                        '<p class="h3">@skill.Title</p> <p class="card d-flex p-3">@skill.Description ' +
+                                                            '@foreach (var skilltype in @skill.SkillTypes) {<div>' +
+                                                                '<a href="#" class="d-inline-flex focus-ring focus-ring-warning py-1 px-2 text-decoration-none border justify-content-between text-success text-uppercase border border-0 text-decoration-none" onclick="updateContent(\'@skilltype.SkillTypeTitle\', \'@skilltype.SkillTypeTitleDescription\')" >' +
+                                                                    '<span class="bg-transparent list-group-item list-group-item-action rounded border border-0 overflow-y-auto text-success">@Html.DisplayFor(modelItem => skilltype.SkillTypeTitle) ' +
+                                                                        '<a asp-controller="SkillTypes" asp-action="Details" asp-route-id="@skilltype.Id">' +
+                                                                            '<i class="bi bi-pen text-warning" ></i>' +
+                                                                        '</a>' +
+                                                                    '</span>' +
+                                                                '</a> ' +
+                                                            '</div>} ' +
+                                                        '</p>'
+                                                </text>   *@
+
+                                                <text>
+                                                    propertiesMap['@skill.Title'] = 
+                                                        '<p class="h3">@skill.Title</p> <p class="card d-flex p-3">@skill.Description ' +
+                                                            '@foreach (var skilltype in @skill.SkillTypes) {<div>' +
+                                                                '<a href="#" class="d-inline-flex focus-ring focus-ring-warning py-1 px-2 text-decoration-none border justify-content-between text-success text-uppercase border border-0 text-decoration-none" onclick="updateContent(\'@skilltype.SkillTypeTitle\', \'@skilltype.SkillTypeTitleDescription\')" >' +
+                                                                    '<span class="bg-transparent list-group-item list-group-item-action rounded border border-0 overflow-y-auto text-success"> ' +
+                                                                        '<div class="d-flex">' +
+                                                                            '<form method="post" asp-controller="SkillTypes" asp-action="Details" asp-route-id="@skilltype.Id" class="m-0"> ' +
+                                                                                '<span class="text-success text-uppercase">@Html.DisplayFor(modelItem => skilltype.SkillTypeTitle)</span>'+
+                                                                                '<input class="form-control d-none" asp-for="@Model.Id" value="@skilltype.Id" />'+
+                                                                                '<button type="submit" class="bg-transparent border-0">'+
+                                                                                    '<i class="bi bi-pen text-warning"></i>'+
+                                                                                '</button>'+
+                                                                            '</form>' +
+
+                                                                        '</div>' +
+                                                                    '</span>' +
+                                                                '</a> ' +
+                                                            '</div>} ' +
+                                                        '</p>'
+                                                </text>  
+                                            }
+                                            
+                                            function changeContent(buttonName, buttonText) {
+                                                // Get the element by its ID
+                                                var contentElement = document.getElementById("contentToChange");
+
+                                                // Change the content based on the button clicked
+                                                contentElement.innerHTML = propertiesMap[buttonName];
+                                            }
+
+                                        </script>
+                                        
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="col shadow p-3 m-3 bg-body-tertiary rounded bg-light overflow-auto" style="width: 100%; height: 70vh; background-color: #ffffff;">
+                                    <!-- Content area for SkillTypeTopicTitle -->
+                                    <div id="contentToUpdate">
+                                        <!-- Initial SkillTypeTopicTitle content (can be empty or static) -->
+                                        <script>
+                                            var propMap = {};
+                                            @foreach (var skill in Model.Skills)
+                                            {
+                                                foreach(var skillType in @skill.SkillTypes)
+                                                {
+                                                    <text>
+                                                        propMap['@skillType.SkillTypeTitle'] = 
+                                                            '<p class="h3">@skillType.SkillTypeTitle Roadmap</p> <p class="card d-flex p-3"> @skillType.SkillTypeTitleDescription' +
+                                                            '@foreach (var topic in @skillType.SkillTypeTopics) {<div>' +
+                                                                    '<span class="bg-transparent rounded border border-0 overflow-y-auto"> ' +
+                                                                        '<div class="d-flex">' +
+                                                                            '<form method="post" asp-controller="SkillTypeTopics" asp-action="Details" asp-route-id="@topic.Id" class="m-0"> ' +
+                                                                                '<span >@Html.DisplayFor(modelItem => topic.SkillTypeTopicTitle)</span>'+
+                                                                                '<input class="form-control d-none" asp-for="@Model.Id" value="@topic.Id" />'+
+                                                                                '<button type="submit" class="bg-transparent border-0">'+
+                                                                                    '<i class="bi bi-pen text-warning"></i>'+
+                                                                                '</button>'+
+                                                                            '</form>' +
+                                                                        '</div>' +
+                                                                    '</span>' +
+                                                            '</div>} ' +
+                                                        '</p>'
+                                                    </text>
+                                                }                                                
+                                            }
+
+                                            function updateContent(btnName, btnText) {
+                                                // Get the element by its ID
+                                                var cntntElement = document.getElementById("contentToUpdate");
+
+                                                // Change the content based on the button clicked
+                                                cntntElement.innerHTML = propMap[btnName];
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                              
+                    </div>
+
+                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">CCCCCCCCCCCCCCC</div>
+                </div>
+            </div>
+        </div>  
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

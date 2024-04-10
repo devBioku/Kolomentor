@@ -1,0 +1,73 @@
+﻿@model SkillType
+
+@{
+    ViewData["Title"] = "Update Skill Type";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+
+        <div class="col-6">
+            <div class="text-center">
+
+                <p>
+                    <h1>
+                        Update @Model.SkillTypeTitle
+                        
+                    </h1>
+                </p>
+
+            </div>
+
+            <div class="card d-flex">
+
+                <div class="card-body">
+                    <form method="post" asp-action="Edit">
+
+                        <div class="mb-3 d-none">
+                            <label asp-for="pseudoMentorId" class="form-label">Title</label>
+                            <input class="form-control" asp-for="pseudoMentorId" value="@ViewBag.pseudoMentorId" />
+                            <span asp-validation-for="pseudoMentorId" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 d-none">
+                            <label asp-for="SkillId" class="form-label">Title</label>
+                            <input asp-for="SkillId" class="form-control" value="@ViewBag.skillId">
+                            <span asp-validation-for="SkillId" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SkillTypeTitle" class="form-label">Title</label>
+                            <input asp-for="SkillTypeTitle" class="form-control">
+                            <span asp-validation-for="SkillTypeTitle" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SkillTypeTitleDescription" class="form-label">Description</label>
+                            <textarea asp-for="SkillTypeTitleDescription" class="form-control"></textarea>
+                            <span asp-validation-for="SkillTypeTitleDescription" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-5">
+                            <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-3">
+
+        </div>
+
+    </div>
+
+
+
+</div> 

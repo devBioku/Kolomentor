@@ -1,0 +1,137 @@
+﻿@model Mentee
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-2 bg-light">
+        </div>
+
+        <div class="col-10">
+            <div>
+                <div class="text-center">
+                    <p class="fw-bolder fs-1 text-uppercase lh-sm"> @Model.FullName</p>
+                </div>
+
+
+                <div>
+
+                    <a class="btn btn-outline-info float-start" asp-action="Edit" asp-route-id="@Model.Id"> Edit Details</a> 
+
+                    <!--Button trigger modal -->
+                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger float-end" asp-route-id="@Model.Id"> Delete</a> 
+                    <!--Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><h6 class="text-danger">Are you sure you want to delete @Model.FullName</h6></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>All these information will be permanently deleted </p>
+                                    <p readonly>Name: @Model.FullName</p>
+                                    <p readonly>Email: @Model.Email</p>
+                                    <p readonly>Mentor: @Model.Mentor</p>
+                                    <p readonly>Summary: @Model.ExecutiveSummary</p>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel Delete</button>
+                                    <form asp-action="Delete">
+                                        <input type="hidden" asp-for="Id" />
+                                        <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="grid">
+                <br />
+
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Education Level</th>
+                                <th scope="col">Mentor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td class="align-middle">
+                                    @Model.FullName
+                                </td>
+
+                                <td class="align-middle">
+                                    @Model.Email
+                                </td>
+                                <td class="align-middle">
+                                    @Model.Gender
+                                </td>
+                                <td class="align-middle">
+                                    @Model.EducationLevel
+                                </td>
+
+                                <td class="align-middle">
+                                    @* <a asp-controller="Mentors" asp-action="Details" asp-route-id="@Model.MentorId">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                        </svg>
+                                    </a> *@
+
+                                    <p>@Model.Mentor.FullName</p>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+         @if (Model.Mentor != null)
+        {
+            <div>
+                <p>Mentor ID: @Model.Mentor.Id</p>
+            </div>
+
+            <div>
+                <p>Mentor FullName @Model.Mentor.FullName</p>
+                
+            </div>
+
+        }
+
+        
+    </div>
+    <h3>Skills from 'skills' property of Mentor:</h3>
+    <ul>
+        @if (Model.Mentor != null && Model.Mentor.Skills != null)
+        {
+            @foreach (var skill in Model.Mentor.Skills)
+            {
+                <li>@skill.Title</li>
+            }
+        }
+        else
+        {
+            <li>No skills available for this mentor.</li>
+        }
+    </ul>
+</div>
+

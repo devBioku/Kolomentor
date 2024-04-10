@@ -1,0 +1,73 @@
+﻿@model IEnumerable<kolomentor.Models.Mentor>
+
+<div>
+    <figure class="text-start">
+        <blockquote class="blockquote badge text-bg-secondary">
+            <h6>List of Mentors in your Preferred Career.</h6>
+        </blockquote>
+    </figure>
+</div>
+
+<div class="container-fluid">
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Place Of Work</th>
+                    <th scope="col">Profession</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (Mentor mentor in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <a asp-action="Details" asp-route-id="@mentor.Id">@Html.DisplayFor(modelItem => mentor.FullName)</a>
+                            </td>
+
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.Email)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.Gender)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.JobTitle)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.ExecutiveSummary)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.PlaceOfWork)
+                            </td>
+
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentor.Career.Category)
+                            </td>
+                        </tr>
+                    }
+                }
+
+                <div style="position: fixed; right: 15%;" class="text-white">
+                    <a asp-action="Create" class="btn btn-success">Create</a>
+                </div>
+
+
+
+
+            </tbody>
+        </table>
+
+        
+    </div>
+
+</div>
+

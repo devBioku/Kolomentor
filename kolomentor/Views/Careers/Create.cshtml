@@ -1,0 +1,50 @@
+﻿@model Career
+
+@{
+    ViewData["Title"] = "Add a new Career";
+}
+
+
+<div class="container-fluid">
+    <div>
+
+        <p>
+            <h1>
+                Add a new Career
+            </h1>
+        </p>
+
+    </div>
+
+    <div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="MentorId" class="form-label">Mentor</label>
+                <input asp-for="MentorId" class="form-control">
+                <span asp-validation-for="MentorId" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">Career Title </label>
+                <input asp-for="Category" class="form-control">
+                <span asp-validation-for="Category" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Career Description</label>
+                <textarea placeholder="Entire a brief description for the career to be added" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class=" text-danger"></span>
+            </div>
+
+            
+
+            <div class="mb-5">
+
+                <input type="submit" value="Add Career" class="btn btn-success float-end" />
+            </div>
+        </form>
+    </div>
+
+</div> 

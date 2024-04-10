@@ -1,0 +1,197 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = kolomentor
+build_property.RootNamespace = kolomentor
+build_property.ProjectDir = /home/bioku/Documents/C#/kolomentor/kolomentor/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/bioku/Documents/C#/kolomentor/kolomentor
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Accounts/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudHMvU2lnblVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Careers/AllCareers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZWVycy9BbGxDYXJlZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Careers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZWVycy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Careers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZWVycy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Careers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZWVycy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9BY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/Mentees.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9NZW50ZWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentees/PopulatePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudGVlcy9Qb3B1bGF0ZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Configuration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9Db25maWd1cmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/ConfirmMentor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9Db25maXJtTWVudG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9EYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/Mentors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9NZW50b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentors/SelectMentor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9ycy9TZWxlY3RNZW50b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentorship/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9yc2hpcC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Mentorship/Mentorship.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVudG9yc2hpcC9NZW50b3JzaGlwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL05vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/_MentorDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19NZW50b3JEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/_mentorsideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19tZW50b3JzaWRlQmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/_SelectMentor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19TZWxlY3RNZW50b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Skills/AllSkills.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxzL0FsbFNraWxscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Skills/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Skills/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxzL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Skills/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxzL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlcy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlcy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlcy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypeTopics/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlVG9waWNzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypeTopics/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlVG9waWNzL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/SkillTypeTopics/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2tpbGxUeXBlVG9waWNzL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bioku/Documents/C\#/kolomentor/kolomentor/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-0ad695na7c

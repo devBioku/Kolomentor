@@ -1,0 +1,24 @@
+﻿@model Mentor
+
+<div>
+    <h4>Are you sure you want to delete @Model.FullName</h4>
+    <h6>Kindly note that all the below information will be parmanently gone</h6>
+</div>
+
+
+<div>
+    <p readonly>@Model.FullName</p>
+    <p readonly>@Model.Email</p>
+    <p readonly>@Model.JobTitle</p>
+    <p readonly>@Model.PlaceOfWork</p>
+    <p readonly>@Model.ExecutiveSummary</p>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" value="Confirm" class="btn btn-danger float-end"/>
+    </form>
+
+    <div>
+        <a class="btn btn-outline-info float-start" asp-action="Edit" asp-route-id="@Model.Id"> Edit Details</a>
+    </div>
+</div>

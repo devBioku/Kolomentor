@@ -1,0 +1,60 @@
+﻿@model IEnumerable<kolomentor.Models.Skill>
+
+<div>
+    <figure class="text-start">
+        <blockquote class="blockquote badge text-bg-secondary">
+            <h6>List of Skill.</h6>
+        </blockquote>
+    </figure>
+</div>
+
+<div class="container-fluid">
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th scope="col">S/N</th>
+                    <th scope="col"> Title (Skill Name) </th>
+                    <th scope="col"> Description</th>
+                    <th scope="col"> Mentor Id</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (Skill skill in Model)
+                    {
+
+                        <tr>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => skill.Id)
+                            </td>
+                            <td class="align-middle">
+                                <a asp-action="Details" asp-route-id="@skill.Id">@Html.DisplayFor(modelItem => skill.Title)</a>
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => skill.Description)
+                            </td>
+
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => skill.MentorId)
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+
+            <div class="text-white">
+                <a asp-controller="Skills" asp-action="Create" class="btn btn-success">Add a Skill</a>
+            </div>
+        </table>
+
+
+
+    </div>
+
+</div>
+

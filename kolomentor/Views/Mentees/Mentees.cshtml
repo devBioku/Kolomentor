@@ -1,0 +1,76 @@
+﻿@model IEnumerable<kolomentor.Models.Mentee>
+
+<div>
+    <figure class="text-start">
+        <blockquote class="blockquote badge text-bg-secondary">
+            <h6>List of Mentees.</h6>
+        </blockquote>
+    </figure>
+</div>
+
+
+<div class="container-fluid">
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th scope="col">S/N</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Career Category</th>
+                    <th scope="col">Executive Summary</th>
+                    <th scope="col">Education Level</th>
+                    <th scope="col">Mentor Id</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (Mentee mentee in Model)
+                    {
+
+                        <tr>
+
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.Id)
+                            </td>
+
+                            <td class="align-middle">
+                                <a asp-action="account" asp-route-id="@mentee.Id">@Html.DisplayFor(modelItem => mentee.FullName)</a>
+                            </td>
+
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.Email)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.Gender)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.Career.Category)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.ExecutiveSummary)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.EducationLevel)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => mentee.MentorId)
+                            </td>
+                        </tr>
+                    }
+                }
+
+                <div style="position: fixed; right: 15%;" class="text-white">
+                    <a asp-controller="Mentees" asp-action="Create" class="btn btn-success">Sign Up</a>
+                </div>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

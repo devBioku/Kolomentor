@@ -1,0 +1,93 @@
+﻿@using kolomentor.Data.Enums;
+@model NewMenteeVM
+@*@{
+    Layout = null;
+}*@
+
+@{
+
+
+
+    ViewData["Title"] = "Add a new Mentee";
+}
+
+
+<div class="row" class="menteeRegBg">
+    <div class="col-3">
+    </div>
+
+    <div class="col-6">
+
+        <div class="container-fluid">
+            <div>
+
+                <p>
+                    <h1 class="justify-content-center ">
+                        Add a new Mentee
+                    </h1>
+                </p>
+
+            </div>
+
+            <div class="card od-flex verflow-hidden" style="width: 100%;">
+
+                <div class="card-body">
+
+                    <form asp-controller="Mentors" asp-action="SelectMentor">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label">Full Name</label>
+                            <input asp-for="FullName" class="form-control">
+                            <span asp-validation-for="FullName" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" type="email">
+                            <span asp-validation-for="Email" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="form-label">Gender</label>
+                            <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                            <span asp-validation-for="Gender" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EducationLevel" class="form-label">Education Level</label>
+                            <select asp-for="EducationLevel" class="form-control" asp-items="Html.GetEnumSelectList<EducationLevel>()"></select>
+                            <span asp-validation-for="EducationLevel" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CareerId" class="form-label">Choose a career</label>
+                            <select asp-for="CareerId" class="form-control" asp-items="ViewBag.careers"></select>
+                            <span asp-validation-for="CareerId" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ExecutiveSummary" class="form-label">Tell us Little about yourself</label>
+                            <textarea asp-for="ExecutiveSummary" class="form-control"></textarea>
+                            <span asp-validation-for="ExecutiveSummary" class=" text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+
+                            <input type="submit" value="Add a Mentee" class="btn btn-outline-success float-end" />
+                        </div>
+
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+    </div>
+</div>
+
+

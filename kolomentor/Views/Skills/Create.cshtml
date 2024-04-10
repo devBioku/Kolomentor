@@ -1,0 +1,69 @@
+﻿@model Skill
+
+@{
+    ViewData["Title"] = "Add a new Skill";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+
+
+        <div class="col-6">
+            <div>
+                
+                <div class=" text-center p-3 h3">
+                    Add a new Roadmap
+                </div>
+
+                <div  class="card d-flex ">
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="mb-3">
+                                <input class="form-control d-none" asp-for="MentorId" value="@ViewBag.mentorId" />
+                                <span asp-validation-for="MentorId" class=" text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Title" class="form-label">Title </label>
+                                <input asp-for="Title" class="form-control">
+                                <span asp-validation-for="Title" class=" text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label">Skill Description</label>
+                                <textarea placeholder="Entire a brief description for the career to be added" asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class=" text-danger"></span>
+                            </div>
+
+                            
+
+                            <div class="mb-5">
+
+                                <input type="submit" value="Add Skill" class="btn btn-success float-end" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            
+            
+        </div>
+
+
+        <div class="col-3">
+
+        </div>
+    </div>
+
+
+    
+
+</div> 

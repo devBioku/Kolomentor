@@ -1,0 +1,77 @@
+﻿@using kolomentor.Data.Enums;
+@model NewMentorVM
+@{
+    ViewData["Title"] = "Update Mentor";
+}
+
+
+<div class="container-fluid">
+    <div>
+
+        <p>
+            <h1>
+                Update @Model.FullName's Information
+            </h1>
+        </p>
+
+
+    </div>
+
+    <div>
+        <form method="post" asp-action="Edit">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label">Full Name</label>
+                <input asp-for="FullName" class="form-control">
+                <span asp-validation-for="FullName" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email">
+                <span asp-validation-for="Email" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Gender" class="form-label">Gender</label>
+                <select asp-for="Gender" class="form-control" type="email" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                <span asp-validation-for="Gender" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="JobTitle" class="form-label">Job Title</label>
+                <input asp-for="JobTitle" class="form-control">
+                <span asp-validation-for="JobTitle" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CareerId" class="form-label">Career Category</label>
+                <select asp-for="CareerId" class="form-control" asp-items="ViewBag.careers"></select>
+                <span asp-validation-for="CareerId" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlaceOfWork" class="form-label">Place of Work</label>
+                <input asp-for="PlaceOfWork" class="form-control">
+                <span asp-validation-for="PlaceOfWork" class=" text-danger"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="ExecutiveSummary" class="form-label">Executive Summary</label>
+                <textarea asp-for="ExecutiveSummary" class="form-control"></textarea>
+                <span asp-validation-for="ExecutiveSummary" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-5">
+
+                <input type="submit" value="Update" class="btn btn-outline-success float-end" />
+            </div>
+        </form>
+    </div>
+
+</div> 

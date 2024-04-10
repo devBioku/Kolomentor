@@ -1,0 +1,82 @@
+<div>
+    
+    <div class="row">
+        <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #ffffff;">
+            <div>
+                
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center h1">@Model.Mentees.Count() </div>
+                    <div>Total Mentees</div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+    <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #ffffff;">
+            <div class="  " >
+                
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center h1">@Model.Skills.Count() </div>
+                    <div>Total Skills</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #6ad34a;">
+            <div class="  " >
+                
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center h1">
+                        @{
+                            var count = 0;
+                            foreach( var skill in @Model.Skills) 
+                            {
+                                foreach(var skillType in @skill.SkillTypes) 
+                                {
+                                    count ++;
+                                }
+                            }
+                            @Html.DisplayFor(modelItem => count)
+                        }
+                        
+                    </div>
+                    <div>Types of Skills</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded " >
+            <div class="">
+                
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="text-center h1">
+                        @{
+                            var countTopics = 0;
+                            foreach( var skill in @Model.Skills) 
+                            {
+                                foreach(var skillType in @skill.SkillTypes) 
+                                {
+                                    foreach(var topic in @skillType.SkillTypeTopics) 
+                                    {
+                                        countTopics ++;
+                                    }
+                            }
+                                }
+                            
+                            @Html.DisplayFor(modelItem => countTopics)
+                        }
+                    </div>
+                    <div>Total Topics</div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

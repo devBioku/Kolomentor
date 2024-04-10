@@ -1,0 +1,194 @@
+@model Mentor
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Dashboard";
+}
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-2 " >
+            <a  asp-action="Details" asp-route-id="@Model.Id" class="fs-1 text-uppercase text-decoration-none text-dark">
+                @{
+                    // C# code block
+                    string inputString = Model.FullName;
+                    string[] words = inputString.Split(' ');
+                    if (words.Length >= 2)
+                    {
+                        int counter = 0;
+                        string firstLetterWord1= null;
+                        string firstLetterWord2= null;
+                        // Get the first letter of each word
+                        
+                        try{
+                            firstLetterWord1 = words[0].Substring(0, 1);                                                    
+                            //string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                            //@Html.DisplayFor(modelItem => twoAlphabets) 
+                        }catch{
+                            firstLetterWord1 = null;
+                            while(firstLetterWord1==null) {
+                                try{
+                                    
+                                    firstLetterWord1 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                                
+                            }
+                        }
+
+                        try{
+                            firstLetterWord2 = words[1].Substring(0, 1);
+                        }catch{
+                            while(firstLetterWord2==null) {
+                                try{
+                                    
+                                    firstLetterWord2 = words[counter].Substring(0, 1);
+                                }catch{
+                                    counter ++;
+                                }
+                            }
+                        }
+                        string twoAlphabets = firstLetterWord1 + firstLetterWord2;
+                        @Html.DisplayFor(modelItem => twoAlphabets)    
+                    }else
+                    {
+                        if (!string.IsNullOrEmpty(inputString) && inputString.Length >= 2)
+                        {
+                            string twoAlphabets = inputString.Substring(0, 2);
+                            @Html.DisplayFor(modelItem => twoAlphabets) 
+                        }else{
+                            // Handle the case where there are not enough words
+                            string twoAlphabets = "N/A";
+                            @Html.DisplayFor(modelItem => twoAlphabets)
+                        }
+                    }
+                }
+
+            </a>
+            <div class="readonly" ><i class="bi bi-pen"></i> works@@ @Model.PlaceOfWork</div>
+
+            <div class="nav nav-tabs" id="myTab" role="tablist">
+                <div class="mt-4" style="background-color: #f0f0f0;">
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-speedometer2 text-success"></i> Dashboard </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-eyeglasses text-success" ></i> Mentee's View</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-journals text-success"></i> Resources</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-bell text-warning"></i> Notification</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-calendar2-week text-success"></i> Availability </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-megaphone text-warning"></i> Broadcast </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-arrows-angle-contract text-success"></i> Connect </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-briefcase text-warning"></i> Portfolio </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-gear text-success"></i> Settings </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-chat-quote-fill text-warning"></i> Communique </a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fs-5 bi bi-gear-wide-connected text-success"></i> Configuration </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="myTabContent">
+                
+            </div>
+        </div>
+
+        <div class="col-10">
+            <div>
+                <div class="text-center">
+                    <p class="fw-bolder fs-1 text-uppercase lh-sm"> @Model.FullName</p>
+                    <span class="lh-sm" readonly>@Model.JobTitle @@ @Model.PlaceOfWork</span>
+
+                </div>
+            </div>
+
+            <div class="grid">
+                    <div >
+        <div class="m-5 pb-1">
+            <div class="row">
+                <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #ffffff;">
+                    <div>
+                         
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <div class="text-center h1">@Model.Mentees.Count() </div>
+                            <div>Total Mentees</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+               <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #ffffff;">
+                    <div class="  " >
+                         
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <div class="text-center h1">@Model.Skills.Count() </div>
+                            <div>Total Skills</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded" style="width: 100%; height: 50vh; background-color: #6ad34a;">
+                    <div class="  " >
+                         
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <div class="text-center h1">
+                                @{
+                                    var count = 0;
+                                    foreach( var skill in @Model.Skills) 
+                                    {
+                                        foreach(var skillType in @skill.SkillTypes) 
+                                        {
+                                            count ++;
+                                        }
+                                    }
+                                    @Html.DisplayFor(modelItem => count)
+                                }
+                                
+                            </div>
+                            <div>Types of Skills</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="position-relative col shadow p-3 m-3 bg-body-tertiary rounded bg-light rounded " >
+                    <div class="">
+                         
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <div class="text-center h1">
+                                @{
+                                    var countTopics = 0;
+                                    foreach( var skill in @Model.Skills) 
+                                    {
+                                        foreach(var skillType in @skill.SkillTypes) 
+                                        {
+                                            foreach(var topic in @skillType.SkillTypeTopics) 
+                                            {
+                                                countTopics ++;
+                                            }
+                                    }
+                                        }
+                                    
+                                    @Html.DisplayFor(modelItem => countTopics)
+                                }
+                            </div>
+                            <div>Total Topics</div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+
+
+

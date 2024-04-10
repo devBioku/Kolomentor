@@ -1,0 +1,178 @@
+﻿@model Mentor
+
+@{
+    ViewData["Title"] = Model.FullName + "'s Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-2 bg-light">
+        </div>
+
+        <div class="col-10">
+            <div>
+                <div class="text-center">
+                    <p class="fw-bolder fs-1 text-uppercase lh-sm"> @Model.FullName</p>
+                    <span class="lh-sm" readonly>@Model.JobTitle @@ @Model.PlaceOfWork</span>
+                </div>
+
+                @*   <div class="form-group">
+                <input class="form-control" value="@ViewBag.MentorName" />
+                </div>*@
+
+                <div>
+
+                    <!-- <a class="btn btn-outline-info float-start" asp-action="Edit" asp-route-id="@Model.Id"> Edit Details</a> -->
+                    <!--Button trigger modal -->
+                    <!--<a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger float-end" asp-route-id="@Model.Id"> Delete</a>  -->
+                    <!--Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><h6 class="text-danger">Are you sure you want to delete @Model.FullName</h6></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p>All these information will be permanently deleted </p>
+                                    <p readonly>Name: @Model.FullName</p>
+                                    <p readonly>Email: @Model.Email</p>
+                                    <p readonly>Profession: @Model.JobTitle</p>
+                                    <p readonly>Work Place: @Model.PlaceOfWork</p>
+                                    <p readonly>Total Number of Mentees: @Model.Mentees.Count()</p>
+                                    <p readonly>Total Number Of Guests: @Model.Guests.Count</p>
+                                    <p readonly>Summary: @Model.ExecutiveSummary</p>
+                                    <p readonly>Summary: @Model.Career.</p>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel Delete</button>
+                                    <form asp-action="Delete">
+                                        <input type="hidden" asp-for="Id" />
+                                        <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="grid">
+
+
+                <ul class="nav nav-tabs d-flex justify-content-between l">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Mentees</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Resources</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">PDFs</a></li>
+                            <li><a class="dropdown-item" href="#">Videos</a></li>
+                            <li><a class="dropdown-item" href="#">Links</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Others</a>
+                    </li>
+
+                    <div class="float-end">
+                        <div class="btn btn-secondary position-relative">
+                            Total
+                            <span class="position-absolute top-0 start-100 translate-middle badge  bg-warning ">
+                                <span readonly>@Model.Mentees.Count()</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </ul>
+
+
+                <br />
+
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Education Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                @foreach (var mentee in Model.Mentees)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            <a asp-controller="Mentees" asp-action="Details" asp-route-id="@mentee.Id">@Html.DisplayFor(modelItem => mentee.FullName)</a>
+                                        </td>
+
+                                        <td class="align-middle">
+                                            @Html.DisplayFor(modelItem => mentee.Email)
+                                        </td>
+                                        <td class="align-middle">
+                                            @Html.DisplayFor(modelItem => mentee.Gender)
+                                        </td>
+                                        <td class="align-middle">
+                                            @Html.DisplayFor(modelItem => mentee.EducationLevel)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <a type="button" class="btn btn-primary btn btn-primary float-start" asp-action="SelectMentor">Go Back</a>
+        </div>
+
+
+
+
+        <form asp-controller="Mentees" asp-action="Create">
+
+            @* <h1 class="span2">Select a Mentor</h1> *@
+
+            <div class="form-group d-none">
+                <input class="form-control" asp-for="@Model.FullName" value="@ViewBag.FullName" />
+            </div>
+
+            <div class="form-group d-none" >
+                <input class="form-control" asp-for="@Model.Email" value="@ViewBag.Email" />
+            </div>
+
+            <div class="form-group d-none">
+                <input class="form-control" asp-for="@Model.Gender" value="@ViewBag.Gender" />
+            </div>
+
+            <div class="form-group d-none">
+                <input class="form-control" asp-for="@Model.CareerId" value="@ViewBag.CareerId" />
+            </div>
+
+            <div class="form-group d-none">
+                <input class="form-control" asp-for="@Model.ExecutiveSummary" value="@ViewBag.ExecutiveSummary" />
+            </div>
+
+            <div class="form-group d-none">
+                <input class="form-control" asp-for="@Model.Id" value="@Model.Id" />
+            </div>
+
+            <div>
+                <input type="submit" value="Confirm Mentor" class="btn btn-outline-success float-end" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
